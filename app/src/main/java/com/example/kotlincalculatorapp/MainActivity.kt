@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.kotlincalculatorapp.calculator.Interpreter
 import com.example.kotlincalculatorapp.databinding.ActivityMainBinding
 import com.example.kotlincalculatorapp.ui.theme.KotlinCalculatorAppTheme
 
@@ -64,7 +65,8 @@ class MainActivity : ComponentActivity() {
     }
 
     fun equalsAction(view: View) {
-        binding.resultsTextView.text = calculateResults()
+        val inputString: String = binding.workingsTextView.text.toString()
+        binding.resultsTextView.text = Interpreter.interp(inputString)
     }
 
     private fun calculateResults(): String {
