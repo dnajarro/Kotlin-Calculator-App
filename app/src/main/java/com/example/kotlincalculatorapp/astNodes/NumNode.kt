@@ -2,7 +2,7 @@ package com.example.kotlincalculatorapp.astNodes
 
 import com.example.kotlincalculatorapp.enums.NodeType
 
-class NumNode(index: Int, val value: String): Node(index) {
+class NumNode(val value: String): Node() {
     override fun getText(): String {
         return value
     }

@@ -2,7 +2,7 @@ package com.example.kotlincalculatorapp.astNodes
 
 import com.example.kotlincalculatorapp.enums.NodeType
 
-abstract class Node(val index: Int): Comparable<Node> {
+abstract class Node() {
 
     abstract fun getText(): String
 
@@ -12,9 +12,5 @@ abstract class Node(val index: Int): Comparable<Node> {
 
     open fun getNodeType(): NodeType {
         return NodeType.NODE
-    }
-
-    override fun compareTo(other: Node): Int {
-        return this.index.compareTo(other.index)
     }
 }

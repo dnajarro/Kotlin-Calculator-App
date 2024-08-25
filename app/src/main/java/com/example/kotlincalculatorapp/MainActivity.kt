@@ -21,8 +21,8 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var canAddOperation = false
-    private var canAddDecimal = true
+//    private var canAddOperation = false
+//    private var canAddDecimal = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +35,21 @@ class MainActivity : ComponentActivity() {
     fun numberAction(view: View) {
         if (view is Button) {
             if (view.text == ".") {
-                if (canAddDecimal)
+//                if (canAddDecimal)
                     binding.workingsTextView.append(view.text)
-                canAddDecimal = false
+//                canAddDecimal = false
             } else {
                 binding.workingsTextView.append(view.text)
             }
-            canAddOperation = true
+//            canAddOperation = true
         }
     }
 
     fun operatorAction(view: View) {
-        if (view is Button && canAddOperation) {
+        if (view is Button) {
             binding.workingsTextView.append(view.text)
-            canAddOperation = false
-            canAddDecimal = true
+//            canAddOperation = false
+//            canAddDecimal = true
         }
     }
 

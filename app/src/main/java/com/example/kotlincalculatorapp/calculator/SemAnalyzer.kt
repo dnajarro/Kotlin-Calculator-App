@@ -5,6 +5,7 @@ import com.example.kotlincalculatorapp.astNodes.Node
 import com.example.kotlincalculatorapp.astNodes.NonexistNode
 import com.example.kotlincalculatorapp.astNodes.ParenthesisNode
 import com.example.kotlincalculatorapp.constants.InterpreterConstants
+import com.example.kotlincalculatorapp.constants.NodeConstants
 import com.example.kotlincalculatorapp.enums.NodeType
 
 class SemAnalyzer {
@@ -15,6 +16,8 @@ class SemAnalyzer {
         //  subtraction, multiplication, and division are performed on compatible types.
         // i.e., is addition/subtraction done on NumNodes/ParenthesisNodes/BinopNodes (check recursively)
         // assume ArithNodes are only addition/subtraction for now
+
+        var result: String
 
         if (ast.getNodeType().equals(NodeType.NONEXIST)) { // throw InvalidSyntaxException
             return InterpreterConstants.INVALID_SYNTAX
@@ -31,8 +34,14 @@ class SemAnalyzer {
             val binopNode: BinopNode = ast as BinopNode
             val leftChild: Node = binopNode.leftChild
             val rightChild: Node = binopNode.rightChild
-            analyze(leftChild)
-            analyze(rightChild)
+            // check division by zero
+            if (binopNode.getOperatorAsString().equals(NodeConstants.DIV)) {
+                if (rightChild.eval() == 0.0) return InterpreterConstants.DIVISION_BY_ZERO
+            }
+            result = analyze(leftChild)
+            if (isNotValid(result)) return result
+            result = analyze(rightChild)
+            if (isNotValid(result)) return result
         }
 
         //  -- Function Arguments: If the calculator language includes functions
@@ -86,5 +95,10 @@ class SemAnalyzer {
         //  and nature of the error. This includes invalid operations, incorrect function usage,
         //  and out-of-bound calculations.
         return InterpreterConstants.VALID
+    }
+
+    private fun isNotValid(result: String): Boolean {
+        if (result.equals(InterpreterConstants.INVALID_SYNTAX)) return true
+        return false
     }
 }

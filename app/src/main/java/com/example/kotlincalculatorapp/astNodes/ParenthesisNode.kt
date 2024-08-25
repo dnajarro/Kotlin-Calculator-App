@@ -2,7 +2,7 @@ package com.example.kotlincalculatorapp.astNodes
 
 import com.example.kotlincalculatorapp.enums.NodeType
 
-class ParenthesisNode(index: Int, val expression: List<Node>): Node(index) {
+class ParenthesisNode(val expression: List<Node>): Node() {
     override fun getText(): String {
         return buildString {
             for (i in 0 until expression.size) {

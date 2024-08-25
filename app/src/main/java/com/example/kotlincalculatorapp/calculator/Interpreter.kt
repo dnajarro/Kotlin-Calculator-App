@@ -15,6 +15,8 @@ class Interpreter {
 
     companion object {
         fun interp(input: String): String {
+            if (java.lang.Double.MIN_NORMAL == 0.0) println("They're equal???")
+            else println("They're not equal! Yay!")
             val tokenizer = Tokenizer()
             val parser = Parser()
             val semAnalyzer = SemAnalyzer()

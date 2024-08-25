@@ -2,7 +2,9 @@ package com.example.kotlincalculatorapp.calculator
 
 import com.example.kotlincalculatorapp.constants.TokenConstants
 import com.example.kotlincalculatorapp.enums.TokenType
+import com.example.kotlincalculatorapp.tokens.DivToken
 import com.example.kotlincalculatorapp.tokens.MinusToken
+import com.example.kotlincalculatorapp.tokens.MultToken
 import com.example.kotlincalculatorapp.tokens.Token
 import com.example.kotlincalculatorapp.tokens.NonexistToken
 import com.example.kotlincalculatorapp.tokens.NumToken
@@ -29,12 +31,14 @@ class Tokenizer {
     }
 
     fun findNextNode(curIndex: Int, substr: String): Token {
-        if (!substr.isEmpty()) {
+        if (substr.isNotEmpty()) {
             // TODO: add all subfunctions for finding each type of token and compare them to decide on actual token
             var tokenCandidates: MutableList<Token> = ArrayList()
             tokenCandidates.add(findNumNode(curIndex, substr))
             tokenCandidates.add(findPlusNode(curIndex, substr))
             tokenCandidates.add(findMinusNode(curIndex, substr))
+            tokenCandidates.add(findMultNode(curIndex, substr))
+            tokenCandidates.add(findDivNode(curIndex, substr))
             tokenCandidates.sort()
             for (t in tokenCandidates) {
                 if (!t.getTokenType().equals(TokenType.NONEXIST))
@@ -74,6 +78,28 @@ class Tokenizer {
 
         if (index != -1) {
             return MinusToken(curIndex + index)
+        }
+        return NonexistToken(index, token)
+    }
+
+    fun findMultNode(curIndex: Int, substr: String): Token {
+        var token = ""
+        val index = substr.indexOf(TokenConstants.MULT)
+        var tokenType: TokenType = TokenType.NONEXIST
+
+        if (index != -1) {
+            return MultToken(curIndex + index)
+        }
+        return NonexistToken(index, token)
+    }
+
+    fun findDivNode(curIndex: Int, substr: String): Token {
+        var token = ""
+        val index = substr.indexOf(TokenConstants.DIV)
+        var tokenType: TokenType = TokenType.NONEXIST
+
+        if (index != -1) {
+            return DivToken(curIndex + index)
         }
         return NonexistToken(index, token)
     }
