@@ -34,7 +34,9 @@ class SemAnalyzer {
             val binopNode: BinopNode = ast as BinopNode
             val leftChild: Node = binopNode.leftChild
             val rightChild: Node = binopNode.rightChild
-            // check division by zero
+
+            //  2) Operator Validity -- Division by Zero -- Valid operators: Ensure that only supported
+            //  operators are used
             if (binopNode.getOperatorAsString().equals(NodeConstants.DIV)) {
                 if (rightChild.eval() == 0.0) return InterpreterConstants.DIVISION_BY_ZERO
             }
@@ -48,9 +50,6 @@ class SemAnalyzer {
         //  (e.g., sin, cos, sqrt), ensure that the correct number and types of arguments are passed.
         //  For example, sqrt should only take a single numeric argument, and log might only accept
         //  positive numbers.
-
-        //  2) Operator Validity -- Division by Zero -- Valid operators: Ensure that only supported
-        //  operators are used
 
         //  3) Function and Variable Scope -- Variable Declaration Before Use: If the calculator
         //  language supports variables, ensure that variables are declared before they are
@@ -98,7 +97,6 @@ class SemAnalyzer {
     }
 
     private fun isNotValid(result: String): Boolean {
-        if (result.equals(InterpreterConstants.INVALID_SYNTAX)) return true
-        return false
+        return result.equals(InterpreterConstants.INVALID_SYNTAX)
     }
 }
