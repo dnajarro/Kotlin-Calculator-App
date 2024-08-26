@@ -15,7 +15,6 @@ class SemAnalyzer {
         //  (e.g., integers, floating-point numbers). You need to ensure that operations like addition,
         //  subtraction, multiplication, and division are performed on compatible types.
         // i.e., is addition/subtraction done on NumNodes/ParenthesisNodes/BinopNodes (check recursively)
-        // assume ArithNodes are only addition/subtraction for now
 
         var result: String
 

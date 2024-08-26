@@ -2,7 +2,7 @@ package com.example.kotlincalculatorapp.constants
 
 object NodeConstants {
     const val PLUS: String = "+"
-    const val MINUS: String = "-"
+    const val MINUS: String = "–"
     const val DIV: String = "/"
     const val MULT: String = "*"
     const val EXP: String = "^"

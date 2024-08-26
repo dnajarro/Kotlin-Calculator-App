@@ -1,11 +1,11 @@
 package com.example.kotlincalculatorapp.astNodes
 
-import com.example.kotlincalculatorapp.constants.TokenConstants
 import com.example.kotlincalculatorapp.enums.NodeType
 import com.example.kotlincalculatorapp.enums.TokenType
 import com.example.kotlincalculatorapp.tokens.Token
+import kotlin.math.pow
 
-class BinopNode(val leftChild: Node, val rightChild: Node, val operator: Token): Node(){
+class BinopNode(val leftChild: Node, val rightChild: Node, val operator: Token): Node() {
     override fun getText(): String {
         return leftChild.getText() + operator.getText() + rightChild.getText()
     }
@@ -14,7 +14,8 @@ class BinopNode(val leftChild: Node, val rightChild: Node, val operator: Token):
         if (operator.getTokenType().equals(TokenType.PLUS)
             || operator.getTokenType().equals(TokenType.MINUS)
             || operator.getTokenType().equals(TokenType.MULT)
-            || operator.getTokenType().equals(TokenType.DIV))
+            || operator.getTokenType().equals(TokenType.DIV)
+            || operator.getTokenType().equals(TokenType.EXP))
             return NodeType.ARITHMETIC
         return NodeType.NODE
     }
@@ -32,6 +33,8 @@ class BinopNode(val leftChild: Node, val rightChild: Node, val operator: Token):
             return leftChild.eval() * rightChild.eval()
         if (operator.getTokenType().equals(TokenType.DIV))
             return leftChild.eval() / rightChild.eval()
+        if (operator.getTokenType().equals(TokenType.EXP))
+            return leftChild.eval().pow(rightChild.eval())
         return super.eval()
     }
 }

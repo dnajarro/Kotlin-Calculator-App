@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">KotlinCalculatorApp</string>
+    <string name="all_clear">AC</string>
+    <string name="backspace">⌫</string>
+    <string name="logarithm">log(</string>
+    <string name="nat_log">ln(</string>
+    <string name="square_root">sqrt(</string>
+    <string name="sin">sin(</string>
+    <string name="cos">cos(</string>
+    <string name="tan">tan(</string>
+    <string name="exponent">^</string>
+    <string name="left_parenthesis">(</string>
+    <string name="right_parenthesis">)</string>
+    <string name="division">/</string>
+    <string name="multiplication">*</string>
+    <string name="plus">+</string>
+    <string name="minus">–</string>
+    <string name="equals">=</string>
 </resources>

@@ -3,12 +3,12 @@ package com.example.kotlincalculatorapp.tokens
 import com.example.kotlincalculatorapp.constants.TokenConstants
 import com.example.kotlincalculatorapp.enums.TokenType
 
-class NonexistToken(index: Int): Token(index) {
+class SqrtToken(index: Int): Token(index) {
     override fun getText(): String {
-        return TokenConstants.NONEXIST
+        return TokenConstants.SQRT
     }
 
     override fun getTokenType(): TokenType {
-        return TokenType.NONEXIST
+        return TokenType.SQRT
     }
 }

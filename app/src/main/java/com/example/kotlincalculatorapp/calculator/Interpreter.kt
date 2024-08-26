@@ -3,6 +3,8 @@ package com.example.kotlincalculatorapp.calculator
 import com.example.kotlincalculatorapp.astNodes.Node
 import com.example.kotlincalculatorapp.constants.InterpreterConstants
 import com.example.kotlincalculatorapp.tokens.Token
+import java.util.Locale
+import kotlin.math.pow
 
 class Interpreter {
 
@@ -15,32 +17,32 @@ class Interpreter {
 
     companion object {
         fun interp(input: String): String {
-            if (java.lang.Double.MIN_NORMAL == 0.0) println("They're equal???")
-            else println("They're not equal! Yay!")
             val tokenizer = Tokenizer()
             val parser = Parser()
             val semAnalyzer = SemAnalyzer()
-            val calculator = Calculator()
             val tokens: List<Token> = tokenizer.tokenize(input)
             val ast: Node = parser.parse(tokens, mutableListOf())
             val ASTAnalysisResults: String = semAnalyzer.analyze(ast)
-            if (ASTAnalysisResults.equals(InterpreterConstants.VALID)) {
-                return formatNumbers(calculator.calc(ast))
+            if (isValidSyntax(ASTAnalysisResults)) {
+                return formatNumbers(calc(ast))
             }
 
             return ASTAnalysisResults
+        }
+
+        private fun calc(ast: Node): Double {
+            return ast.eval()
+        }
+
+        private fun isValidSyntax(result: String): Boolean {
+            return result.equals(InterpreterConstants.VALID)
         }
 
         private fun formatNumbers(d: Double): String {
             if (d.toString().contains(".")) {
                 return "%s".format(d)
             }
-            return String.format("%d", d.toInt())
-        }
-
-        private fun Double.hasDecimals(): Boolean {
-            val threshold = 1e-9
-            return Math.abs(this - this.toInt()) > threshold
+            return String.format(Locale.getDefault(), "%d", d.toInt())
         }
     }
 }

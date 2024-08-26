@@ -52,18 +52,54 @@
             style="@style/buttonNumber"
             android:textColor="@color/red"
             android:onClick="allClearAction"
-            android:text="AC"/>
+            android:text="@string/all_clear"/>
         <Button
             style="@style/buttonNumber"
             android:textColor="@color/red"
             android:onClick="backSpaceAction"
-            android:text="⌫"/>
-        <Button
-            style="@style/buttonNumber"
-            android:text=""/>
+            android:text="@string/backspace"/>
         <Button
             style="@style/buttonOperator"
-            android:text="/"/>
+            android:text="@string/logarithm"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/nat_log"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/square_root"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/sin"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/cos"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/tan"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/buttonRow">
+
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/exponent"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/left_parenthesis"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/right_parenthesis"/>
+        <Button
+            style="@style/buttonOperator"
+            android:text="@string/division"/>
 
     </LinearLayout>
 
@@ -81,7 +117,7 @@
             android:text="9"/>
         <Button
             style="@style/buttonOperator"
-            android:text="*"/>
+            android:text="@string/multiplication"/>
 
     </LinearLayout>
 
@@ -99,7 +135,7 @@
             android:text="6"/>
         <Button
             style="@style/buttonOperator"
-            android:text="-"/>
+            android:text="@string/minus"/>
 
     </LinearLayout>
 
@@ -117,7 +153,7 @@
             android:text="3"/>
         <Button
             style="@style/buttonOperator"
-            android:text="+"/>
+            android:text="@string/plus"/>
 
     </LinearLayout>
 
